@@ -20,6 +20,7 @@ function Header() {
     header.appendChild(temp);
 
     // set class names
+    header.classList.add("header");
     date.classList.add("date");
     temp.classList.add("temp");
 

@@ -53,25 +53,16 @@ const cardsContainer = document.querySelector(".cards-container");
 cardData.then(response => {
     console.log(cardData);
     console.log("res", response);
-
-    const array = Array.from(response.data.articles);
-    array.push(response.data.articles.javascript);
-    array.push(response.data.articles.bootstrap);
-    array.push(response.data.articles.technology);
-    array.push(response.data.articles.jquery);
-    array.push(response.data.articles.node);
+    
+    const array = Object.values(response.data.articles);
     console.log(array);
 
     array.forEach(item => {
-        const newCard = createCard(item);
-        cardsContainer.appendChild(newCard);
+        item.forEach(element => {
+            const newCard = createCard(element);
+            cardsContainer.appendChild(newCard);
+        })
     })
-
-    // response.data.articles.forEach(item => {
-    //     item.forEach(element => {
-    //         const newCard = createCard(element);
-    //     })
-    // })
 })
 
 cardData.catch(error => {
